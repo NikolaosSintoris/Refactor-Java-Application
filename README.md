@@ -9,10 +9,10 @@ Issue #1:
 LatexEditorView class: This class is strange. Its name and responsibilities do not match. The view package contains classes that have to do with the GUI and the data visualization. LatexEditorView does not have anything to do with these. Instead, it contains application logic and specifically it has methods that realize some basic commands like saving a document to a file, loading a document from a file, creating a new version of the current document using the VersionsManager. An idea to solve this problem is to redistribute the responsibilities of the class to the right classes using the Move Method and the Move Field refactorings. In particular, the code that saves a document to a file (saveToFile()) can be moved to the SaveCommand class, the code that loads a document from a file (loadFromFile()) can be moved to the LoadCommand class. The code that creates versions (saveContents) can be moved to the EditCommand class or to the AddLatexCommand class. Along with the code you may need to change/move fields of LatexEditorView to other classes. Other methods and fields that possibly remain can be moved to the LatexEditorController class which is supposed to serve as middle layer that decouples the GUI from the model classes.
 
 Solution #1:      
-By using the Move Method and Move Field refactorings i moved:
-ï‚· saveToFile() method and the corresponding fields to the SaveCommand class. Especially i merged the saveToFile() with the execute() method.
-ï‚· loadFromFile() method and the corresponding fields to the LoadCommand class. Especially i merged the loadFromFile() with the execute() method.
-ï‚· saveContents() method and the corresponding fields to the EditCommand and the AddLatexCommand classes. Especially i merged the saveContents() with the execute() method of each class.
+By using the Move Method and Move Field refactorings i moved:   
+• saveToFile() method and the corresponding fields to the SaveCommand class. Especially i merged the saveToFile() with the execute() method.   
+• loadFromFile() method and the corresponding fields to the LoadCommand class. Especially i merged the loadFromFile() with the execute() method.   
+• saveContents() method and the corresponding fields to the EditCommand and the AddLatexCommand classes. Especially i merged the saveContents() with the execute() method of each class.
 
 Issue #2:   
 MainWindow class: This is the main GUI class. However, this class also contains a Large Method that should be part of the application logic. Specifically, the editContents() method is a misplaced responsibility that can be moved to the AddLatexCommand class using the Move Method refactoring. The editContents() method also has a lot of Duplicate Code that can be removed.
@@ -50,9 +50,9 @@ At last, i extend the application by adding new functionalities and respective t
 
 Extention #1:   
 As a user I want to save an encrypted form of the latest version of the Latex document on disk storage. The application should let me select a particular encryption strategy that is going to be used before
-saving an encrypted form of the Latex document. In particular, the application should support at least the following strategies:
-	* Atbash: The Atbash cipher is formed by taking the alphabet and mapping it to its reverse, so that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on.
-	* Rot-13: Rot-13 is a letter substitution cipher that replaces a letter with the 13th letter after it, in the alphabet. Rot-13 is a special case of the Caesar cipher, which was developed in ancient Rome.
+saving an encrypted form of the Latex document. In particular, the application should support at least the following strategies:   
+	• Atbash: The Atbash cipher is formed by taking the alphabet and mapping it to its reverse, so that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on.   
+	• Rot-13: Rot-13 is a letter substitution cipher that replaces a letter with the 13th letter after it, in the alphabet. Rot-13 is a special case of the Caesar cipher, which was developed in ancient Rome.
 
 Extention #2:   	
 As a user I want to load an encrypted form the latest version of the Latex document from stable storage. The application should decrypt the document to enable further document editing actions.
