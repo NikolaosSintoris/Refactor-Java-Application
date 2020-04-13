@@ -1,0 +1,1 @@
+addLatex,changeVersionsStrategy,create,disableVersionsManagement,edit,enableVersionsManagement,load,rollbackToPreviousVersion,save,loadEncrypted,saveEncrypted

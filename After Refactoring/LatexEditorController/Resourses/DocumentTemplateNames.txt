@@ -1,0 +1,1 @@
+reportTemplate,bookTemplate,articleTemplate,letterTemplate,emptyTemplate
