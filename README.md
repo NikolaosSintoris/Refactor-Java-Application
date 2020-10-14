@@ -44,7 +44,7 @@ LatexEditorController class: A problem here is in the constructor of the class, 
 Solution #6:   
 To deal with this issue, i created a CommandObjects.txt file that contains all the LaTex command names. Then, in the constructor of the LaTexEditorController class i read the commands from the file and with a for loop we replaced the continuous command.put() operations with a single one.
 
-After all this refactorings, i noticed that the LatexEditorView had most of the responsibilities of the LatexEditorController, so i merged them together under the LatexEditorcontrolller class. Also, before the merge, i moved the contents of the LatexEditorView that correspond with the View part of the application to the MainWindow class, wich was named as the â€œnewâ€ LatexEditorview class. Finally, i did the necessary chages in order the above refactorings become functional.
+After all this refactorings, i noticed that the LatexEditorView had most of the responsibilities of the LatexEditorController, so i merged them together under the LatexEditorcontrolller class. Also, before the merge, i moved the contents of the LatexEditorView that correspond with the View part of the application to the MainWindow class, wich was named as the LatexEditorview class. Finally, i did the necessary chages in order the above refactorings become functional.
 
 At last, i extend the application by adding new functionalities and respective tests.
 
